@@ -1,4 +1,3 @@
-
 class Coche:
     def __init__(self, marca, modelo, año):
         self._marca = marca
@@ -24,9 +23,23 @@ class Coche:
         return self._año
 
     def set_año(self, año):
-        if año > 1885:  # El primer coche fue inventado en 1886
+        if año > 1885:
             self._año = año
         else:
             print("Año no válido. El año debe ser mayor que 1885.")
+
+
+
+if __name__ == "__main__":
+    coche1 = Coche("Toyota", "Corolla", 2020)
+    print(coche1.mostrar_informacion())
+    
+    coche1.set_marca("Honda")
+    coche1.set_año(2021)
+    print("Después de cambiar la marca y el año:")
+    print(coche1.mostrar_informacion())
+    
+   
+    coche1.set_año(1800)  
 
 
