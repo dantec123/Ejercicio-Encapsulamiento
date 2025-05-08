@@ -1,40 +1,38 @@
 class CuentaBancaria:
-    def __init__(self, numero_cuenta):
-        self.__saldo = 0.0  
-        self.__numero_cuenta = numero_cuenta  
+    def __init__(self, titular, saldo, numero_cuenta):
+        self.titular = titular
+        self.saldo = saldo
+        self.numero_cuenta = numero_cuenta
 
     def depositar(self, cantidad):
-        """Método para depositar dinero en la cuenta."""
-        if cantidad > 0:
-            self.__saldo += cantidad
-            print(f"Se han depositado {cantidad} en la cuenta {self.__numero_cuenta}.")
+        if (cantidad > 0):
+            self.saldo += cantidad
         else:
-            print("La cantidad a depositar debe ser mayor que 0.")
+            print("La cantidad a depositar debe ser mayor que cero.")
 
     def retirar(self, cantidad):
-        if 0 < cantidad <= self.__saldo:
-            self.__saldo -= cantidad
-            print(f"Se han retirado {cantidad} de la cuenta {self.__numero_cuenta}.")
+        if (cantidad <= self.saldo):
+            self.saldo -= cantidad
         else:
-            print("La cantidad a retirar debe ser mayor que 0 y no puede exceder el saldo disponible.")
+            print("Fondos insuficientes. No se puede realizar el retiro.")
 
-    def get_saldo(self):
-        return self.__saldo
-
+    def mostrar_informacion(self):
+        print("Titular:", self.titular)
+        print("Número de cuenta:", self.numero_cuenta)
+        print("Saldo actual:", self.saldo)
 
 if __name__ == "__main__":
-    cuenta = CuentaBancaria("123456789")
+    cuenta1 = CuentaBancaria("Dante Corzo", 1000, "102030501")
+    cuenta1.mostrar_informacion()
 
-    print(f"Saldo inicial: {cuenta.get_saldo()}")
+    print("+ $500...")
+    cuenta1.depositar(500)
+    cuenta1.mostrar_informacion()
 
-    cuenta.depositar(1000.0)
-    print(f"Saldo después del depósito: {cuenta.get_saldo()}")
+    print(" -$2000...")
+    cuenta1.retirar(2000) 
+    cuenta1.mostrar_informacion()
 
-    cuenta.retirar(200.0)
-    print(f"Saldo después del retiro: {cuenta.get_saldo()}")
-
-    cuenta.retirar(900.0)
-    print(f"Saldo después del intento de retiro: {cuenta.get_saldo()}")
-
-    cuenta.depositar(-50.0)
-    print(f"Saldo después del intento de depósito negativo: {cuenta.get_saldo()}")
+    print("-$700...")
+    cuenta1.retirar(700)
+    cuenta1.mostrar_informacion()
