@@ -16,8 +16,8 @@ if __name__ == "__main__":
     persona1 = Persona("Dante", 17, "Masculino")
     persona1.mostrar_informacion()
 
-    print("\nCambiando edad...\n")
-    persona1.cambiar_edad(30)
+    print("Edad cambiada")
+    persona1.cambiar_edad(40)
     persona1.mostrar_informacion()
 
         
