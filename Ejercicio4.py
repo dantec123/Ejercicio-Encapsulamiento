@@ -1,38 +1,23 @@
-class CuentaBancaria:
-    def __init__(self, titular, saldo, numero_cuenta):
-        self.titular = titular
-        self.saldo = saldo
-        self.numero_cuenta = numero_cuenta
+from datetime import datetime
 
-    def depositar(self, cantidad):
-        if (cantidad > 0):
-            self.saldo += cantidad
-        else:
-            print("La cantidad a depositar debe ser mayor que cero.")
+class Libro:
+    def __init__(self, titulo, autor, año_publicacion):
+        self.titulo = titulo
+        self.autor = autor
+        self.año_publicacion = año_publicacion
 
-    def retirar(self, cantidad):
-        if (cantidad <= self.saldo):
-            self.saldo -= cantidad
-        else:
-            print("Fondos insuficientes. No se puede realizar el retiro.")
+    def descripcion(self):
+        return f"'{self.titulo}' de {self.autor}  escrito en {self.año_publicacion}."
 
-    def mostrar_informacion(self):
-        print("Titular:", self.titular)
-        print("Número de cuenta:", self.numero_cuenta)
-        print("Saldo actual:", self.saldo)
+    def es_clasico(self):
+        año_actual = datetime.now().year
+        return (año_actual - self.año_publicacion) > 50
 
 if __name__ == "__main__":
-    cuenta1 = CuentaBancaria("Dante Corzo", 1000, "102030501")
-    cuenta1.mostrar_informacion()
+    libro = Libro("Chac Mool", "Carlos Fuentes", 1954)
+    print(libro.descripcion())
 
-    print("+ $500...")
-    cuenta1.depositar(500)
-    cuenta1.mostrar_informacion()
-
-    print(" -$2000...")
-    cuenta1.retirar(2000) 
-    cuenta1.mostrar_informacion()
-
-    print("-$700...")
-    cuenta1.retirar(700)
-    cuenta1.mostrar_informacion()
+    if (libro.es_clasico()):
+        print("Este libro es un clásico.")
+    else:
+        print("Este libro no es un clásico.")
