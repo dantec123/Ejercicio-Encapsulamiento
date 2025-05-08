@@ -1,8 +1,7 @@
 class CuentaBancaria:
     def __init__(self, numero_cuenta):
-        """Inicializa la cuenta bancaria con un número de cuenta y un saldo inicial de 0.0."""
-        self.__saldo = 0.0  # Atributo privado para el saldo
-        self.__numero_cuenta = numero_cuenta  # Atributo privado para el número de cuenta
+        self.__saldo = 0.0  
+        self.__numero_cuenta = numero_cuenta  
 
     def depositar(self, cantidad):
         """Método para depositar dinero en la cuenta."""
